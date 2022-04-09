@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Custom Properties */
+:root {
+  --font-family: 'Poppins', sans-serif;
+  --color:  rgb(227, 227, 227);
+  --background-color: rgb(36, 35, 35);
+  --filtro: invert(75%);
+  --gray: white;
+  --background-hover:  rgb(186, 180, 180); 
+  --color-hover: black;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  color: var(--color);
+  letter-spacing: 1px;
+  background-color: var(--background-color);
+  transition: background-color 0.25s ease-in 0.25s;
+  
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+
+  width: 100%;
+  display: block;
+}
+ul {
+  list-style-type: none;
+}
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+}
+
+i{
+  font-size: 2.5rem;
+}
+
+
+
+.navbar img {
+  filter: var(--filtro);
+  width: 70%;
+}
+
+body.light-theme{
+  
+  --font-family: 'Poppins', sans-serif;
+  --color:  rgb(36, 36, 36);
+  --background-color: rgb(255, 255, 255);
+  --filtro: invert(0%);
+  --background-hover:  rgb(55, 52, 52); 
+  --color-hover:  rgb(255, 255, 255);
+  --gray: rgb(233, 233, 233);
+ 
+  
+}
+
+/* Reusable classes */
+
+.container{
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.d-grid{
+  display: grid;
+
+}
+
+.place-items-center{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+
+}
+
+.screen-sm-hidden{
+  display: none;
+}
+
+
+/* header */
+
+.header{
+  background-color: var(--background-color);
+  position: fixed;
+  top: 0;
+  width: 0;
+  width: 100%;
+  z-index: 999;
+  animation: fade-in .7s ease forwards;
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1.5rem;
+
+}
+
+.logo{
+  text-decoration: none;
+  color: inherit;
+  filter: hue-rotate(90deg);
+
+
+}
+.menu{
+  position: absolute;
+  top: 5.5rem ;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100%;
+  padding: 1.5rem;
+  background-color: var(--background-color);
+  cursor: pointer;
+  color: var(--color);
+  /* esto con js va verse y crecer a su dimension normal */
+  opacity: 0; 
+  transform: scale(0);
+  transition: opacity .25s ease-in;
+}
+
+.list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+
+}
+.menu > .list{
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.list-item{
+
+  text-align: center;
+  padding: 1.6rem;
+  border-bottom: thin solid var(--color);
+}
+
+.list-item:hover{
+
+  background-color: var(--background-hover);
+}
+.list-item:hover a{
+  color: var(--color-hover);
+  gap: 1.5rem
+}
+
+.close-menu-icon{
+  display: none;
+}
+.btn{
+  cursor: pointer;
+}
+
+/* la icona moon parte invisibile */
+.moon-icon{
+  display: none;
+}
+
+/* Quando aggiungiamo la classe light-theme .sun-icon diventa no-display */
+.light-theme .sun-icon{
+  display: none;
+}
+/* quando aggiungiamo la classe light-theme .moon-icon diventa display: block */
+.light-theme .moon-icon{
+  display: block;
+}
+
+
+/* header JS styles */
+
+.menu.activated{
+  opacity: 1;
+  transform: scale(1) translateX(50%);
+}
+
+
+.menu-toggle-icon.activated .open-menu-icon{
+  display: none;
+}
+
+.menu-toggle-icon.activated .close-menu-icon{
+  display: block;
+}
+
+
+.main-content{
+  margin-top: 6rem ;
+  color: inherit;
+
+}
+
+.bottle,
+.rose{
+  width: 50%;
+  height: auto;;
+}
+
+.item-title{
+  text-align: center;
+}
+
+.item-description{
+  padding: 2rem;
+  line-height: 2.6rem;
+  text-align: center;
+  white-space: break-spaces;;
+}
+
+
+.container{
+  grid-template-rows: 70vh 1fr;
+  overflow-x: hidden;
+
+}
+
+.description{
+  justify-content: center;
+  align-content: center;
+  transform: translateY(-150%);
+  animation: fade-in .7s ease forwards, fade-in-top .8s ease-in-out forwards;
+}
+
+a.btn{
+  background-color: rgb(223, 43, 43);
+  color: white;
+  width: max-content;
+  border-radius: 1rem;
+  padding: 1rem;
+  justify-self: center;
+  opacity: 0;
+  animation: fade-in .7s ease forwards;
+  
+}
+.btn:hover{ 
+  background-color: rgb(228, 160, 160);
+  transition: transform .7s ease;
+  transform: scale(1.2)
+}
+
+.image-wrapper{
+
+  position: relative;
+
+}
+
+.image-wrapper::after{
+  content: ' ';
+  background-color: rgb(255, 214, 214);
+  width: 80vw;
+  height: 100%;
+  position:absolute;
+  top: 0;
+  z-index: -2;
+  animation: righ-left 5s ease-in-out infinite;
+
+}
+.bottle{
+  width: 20rem;
+  position: relative;
+  height: auto;
+  top: 0rem;
+  right: -10rem;
+  transform: translateY(-300%) rotate(45deg);
+  animation: fade-in-top 4s ease-in-out forwards;
+
+}
+.bottle-wrap{
+  animation: floating 5s linear 4s infinite;
+}
+.rose{
+position: absolute;
+width: 20rem;
+height: auto;
+bottom: -3rem;
+left: 1.5rem;
+transform: translateY(300%);
+animation: fade-in-top .7s ease-in-out forwards, floating 5s linear 2s infinite;
+z-index: -1;
+
+}
+
+.footer{
+  margin-top: 6rem;
+}
+
+.footer > .container{
+  width: 100vw;
+  padding: 0;
+}
+.email-social-icons{
+  background-color: var(--gray);
+  padding: 2rem;
+  width: 100%;
+
+}
+.btn-email{
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.email{
+  margin-top: 1rem;
+  padding: 1.6rem 4rem;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 1px solid var(--color);
+  background-color: var(--background-color);
+}
+
+.icon-wrapper{
+  margin-top: 1.6rem;
+  display: flex;
+  justify-self: start;
+  gap: 1.6rem;
+  color: var(--background-hover);
+
+}
+.icon-wrapper i{
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+.details-wrapper{
+  padding: 0 2rem;
+  margin-top: 2rem;
+
+}
+.detail-item{
+  display: flex;
+  justify-content: space-between;
+}
+.detail-item{
+ padding: 1rem 0;
+ cursor: pointer;
+
+
+}
+
+.copyrights{
+  font-size: 1rem;
+  margin-top:2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+
+.container > p{
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+
+
+
+
+@keyframes fade-in {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-top{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+
+@keyframes righ-left{
+  0%{
+    transform: translateX(-150%)
+  }
+  50%{
+    transform: translateX(0);
+
+  }
+  100%{
+    transform: translateX(150%);
+  }
+
+}
+
+
+@keyframes floating {
+
+  0%{
+transform: rotate(5deg) translateY(0);
+  }
+  25%{
+    transform: rotate(-5deg);
+
+  }
+  50%{
+    transform: rotate(5deg);
+
+  }
+  75%{
+    transform: rotate(-5deg) translateY(10%);
+
+  }
+  100%{
+    transform: rotate(5deg) translateY(0);
+  }
+
+}
+
+
+
+
+
+@media screen and (min-width: 992px) {
+
+.menu{
+  position: initial;
+  width: initial;
+  padding: initial;
+  background-color: transparent;
+  opacity: 1;
+  transform: initial;
+
+  
+}
+.menu > .list{
+  flex-direction: row;
+}
+.list-item{
+  border: none;
+}
+.screen-lg-hidden{
+  display:none;
+}
+
+.container{
+  grid-template-columns: .7fr 1fr;
+}
+.bottle{
+  top: 15rem; 
+  left: 20rem;
+
+}
+.rose{
+ bottom: 8rem;
+  left: 13rem;
+
+}
+
+.container-email-social-icon{
+  max-width: 6rem;
+}
+}
