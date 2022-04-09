@@ -257,7 +257,7 @@ a.btn{
   animation: fade-in .7s ease forwards;
   
 }
-.btn:hover{ 
+a.btn:hover{ 
   background-color: rgb(228, 160, 160);
   transition: transform .7s ease;
   transform: scale(1.2)
